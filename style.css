@@ -1,0 +1,300 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Inter", "Segoe UI", sans-serif;
+}
+
+body {
+  background: linear-gradient(135deg, #e3f2fd, #f8fbff);
+}
+
+/* LAYOUT */
+.app {
+  display: flex;
+  height: 100vh;
+}
+
+/* SIDEBAR */
+.sidebar {
+  width: 230px;
+  background: linear-gradient(180deg, #1565c0, #1e88e5);
+  padding: 25px;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.sidebar h2 {
+  margin-bottom: 20px;
+}
+
+.sidebar button {
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  background: rgba(255,255,255,0.15);
+  color: white;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.sidebar button:hover {
+  background: rgba(255,255,255,0.3);
+}
+
+.sidebar .primary {
+  background: white;
+  color: #1565c0;
+  font-weight: 600;
+}
+
+/* CONTENT */
+.content {
+  flex: 1;
+  padding: 30px;
+  overflow-y: auto;
+}
+
+.header {
+  background: white;
+  padding: 20px;
+  border-radius: 14px;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+  margin-bottom: 25px;
+}
+
+/* ================= CARDS ================= */
+.card-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 22px;
+}
+
+.card {
+  background: linear-gradient(
+    180deg,
+    rgba(255,255,255,0.95),
+    rgba(255,255,255,0.75)
+  );
+  border-radius: 22px;
+  padding: 22px;
+  position: relative;
+  box-shadow:
+    0 12px 28px rgba(0,0,0,0.08),
+    inset 0 0 0 1px rgba(255,255,255,0.6);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.card::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 6px;
+  height: 100%;
+  background: linear-gradient(180deg, #1565c0, #42a5f5);
+  border-radius: 22px 0 0 22px;
+}
+
+.card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 18px 38px rgba(30,136,229,0.2);
+}
+
+.card h3 {
+  font-size: 18px;
+  font-weight: 600;
+  color: #0d47a1;
+  margin-bottom: 8px;
+}
+
+.card p {
+  font-size: 13.5px;
+  color: #444;
+  line-height: 1.6;
+}
+
+.card hr {
+  border: none;
+  height: 1px;
+  background: linear-gradient(to right, transparent, #ccc, transparent);
+  margin: 12px 0;
+}
+
+/* BADGE */
+.badge {
+  margin-top: 12px;
+  display: inline-block;
+  padding: 7px 16px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 600;
+  background: linear-gradient(90deg, #e3f2fd, #bbdefb);
+  color: #0d47a1;
+}
+
+/* LOADER */
+.loader {
+  width: 100%;
+  background: #e3f2fd;
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 20px;
+  display: none;
+}
+
+.progress {
+  height: 6px;
+  width: 0%;
+  background: linear-gradient(90deg, #42a5f5, #1e88e5);
+  animation: loading 1.2s infinite;
+}
+
+@keyframes loading {
+  0% { width: 0%; }
+  50% { width: 70%; }
+  100% { width: 100%; }
+}
+
+/* FORM */
+.form-card {
+  background: white;
+  padding: 25px;
+  border-radius: 18px;
+  box-shadow: 0 14px 28px rgba(0,0,0,0.1);
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+}
+
+.form-card h3 {
+  grid-column: span 3;
+  color: #1565c0;
+}
+
+.form-card input,
+.form-card select {
+  padding: 12px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+}
+
+.form-card button {
+  grid-column: span 3;
+  padding: 12px;
+  background: linear-gradient(90deg, #1565c0, #1e88e5);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.form-card button:hover {
+  background: linear-gradient(90deg, #1e88e5, #1565c0);
+}
+
+/* ================= RESPONSIVE DESIGN ================= */
+
+/* ---------- TABLETS (<= 1024px) ---------- */
+@media (max-width: 1024px) {
+
+  .sidebar {
+    width: 200px;
+    padding: 20px;
+  }
+
+  .form-card {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .form-card h3,
+  .form-card button {
+    grid-column: span 2;
+  }
+}
+
+/* ---------- MOBILE & SMALL TABLETS (<= 768px) ---------- */
+@media (max-width: 768px) {
+
+  /* Layout changes */
+  .app {
+    flex-direction: column;
+    height: auto;
+  }
+
+  /* Sidebar becomes top navbar */
+  .sidebar {
+    width: 100%;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 15px;
+  }
+
+  .sidebar h2 {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 10px;
+  }
+
+  .sidebar button {
+    flex: 1 1 48%;
+    font-size: 13px;
+    padding: 10px;
+  }
+
+  /* Content spacing */
+  .content {
+    padding: 20px;
+  }
+
+  /* Cards */
+  .card-container {
+    grid-template-columns: 1fr;
+  }
+
+  /* Form becomes single column */
+  .form-card {
+    grid-template-columns: 1fr;
+  }
+
+  .form-card h3,
+  .form-card button {
+    grid-column: span 1;
+  }
+}
+
+/* ---------- SMALL MOBILES (<= 480px) ---------- */
+@media (max-width: 480px) {
+
+  .header h1 {
+    font-size: 20px;
+  }
+
+  .sidebar button {
+    flex: 1 1 100%;
+    font-size: 12px;
+  }
+
+  .card {
+    padding: 18px;
+  }
+
+  .card h3 {
+    font-size: 16px;
+  }
+
+  .card p {
+    font-size: 12.5px;
+  }
+
+  .badge {
+    font-size: 11px;
+    padding: 6px 14px;
+  }
+}
+
