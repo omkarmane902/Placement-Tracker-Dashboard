@@ -195,7 +195,6 @@ body {
 .form-card button:hover {
   background: linear-gradient(90deg, #1e88e5, #1565c0);
 }
-
 /* ================= RESPONSIVE DESIGN ================= */
 
 /* ---------- TABLETS (<= 1024px) ---------- */
@@ -297,4 +296,3 @@ body {
     padding: 6px 14px;
   }
 }
-
